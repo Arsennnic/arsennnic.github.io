@@ -7,9 +7,8 @@ author:     Arsennnic
 header-img: img/posts/2018-08-28-Machine-Learning-Notes-1/header_bg.jpg
 catalog: true
 tags:
-    - Mac
-    - 终端
-    - Git
+    - Machine-Learning
+    - Matlab
 ---
 
 >test
