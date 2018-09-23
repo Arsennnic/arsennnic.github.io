@@ -40,7 +40,7 @@ $$
 
 The following image shows us what the sigmoid function looks like:
 
-![Sigmold function]({{site.url}}/img/posts/{{page.tittle}}/sigmold_function.png)
+![Sigmold function]({{site.url}}/img/posts/{{page.title}}/sigmold_function.png)
 
 The function $g(z)$ shown here, maps any real number to the (0, 1) interval, making it useful for transforming an arbitrary-valued function into a function better suited for classification.
 
@@ -101,7 +101,7 @@ $$
 
 The figure looks like:
 
-![Cost Function](../../../../img/posts/2018-09-07-Machine-Learning-Notes-2/cost_function.png)
+![Cost Function]({{site.url}}/img/posts/{{page.title}}/cost_function.png)
 
 
 We can compress our cost function's two conditional cases into one case:
@@ -175,7 +175,7 @@ Consider the problem of predicting $y$ from $x \in \mathbb{R}$.
 
 Figure (a) shows original data. Figure (b)(c)(d) show the results of fitting a first-order, second-order and high-order polynomial function to the dataset. 
 
-![Overfitting](../../../../img/posts/2018-09-07-Machine-Learning-Notes-2/overfitting.png)
+![Overfitting]({{site.url}}/img/posts/{{page.title}}/overfitting.png)
 
 As showed in figure (b), the data doesn’t really lie on straight line, and so the fit is not very good. We say figure (b) shows an instance of **underfitting**.
 
