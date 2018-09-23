@@ -4,7 +4,7 @@ title:      Machine Learning Notes (1)
 subtitle:   Chapter I - Linear Regression
 date:       2018-08-30
 author:     Arsennnic
-header-img: img/posts/{{page.title}}/header_bg.png
+header-img: img/posts/Machine Learning Notes (1)/header_bg.png
 catalog: true
 mathjax: true
 tags:
@@ -189,7 +189,7 @@ Work well when $n$ is large |True | False
 
 Sometimes $X^TX$ is **not invertable**, the common causes might be:
 
-- Redundant features, where two features are very closely related (i.e. they are linearly dependent)
+- Redundant features, where two features are very closely related (i.e. they are linearly dependent).
 
 - Too many features (e.g. $m \le n$). In this case, delete some features or use 
 **"[regularization]({{site.url}}/2018/09/07/Machine-Learning-Notes-2/#2-regularization)"**.
