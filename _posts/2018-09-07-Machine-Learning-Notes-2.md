@@ -155,7 +155,7 @@ Now we will approach the classification of data when we have more than two categ
 We divide the problem into (n+1) binary classification, in each one we predict the probability.
 
 $$
-h_\theta^{(i)} = P(y=i|x;\theta), \quad i\in\\{0,1,2...,n\\}
+h_\theta^{(i)} = P(y=i|x;\theta), \quad i\in\{0,1,2...,n\}
 $$
 
 And we pick the class with the highest probability -- $\max(h_\theta^{(i)})$ -- as our prediction.
@@ -239,7 +239,7 @@ $
 \begin{split}
 & \textit{Repeat until convergency: } \\{ \\\\ 
 & \quad\quad \theta_0 := \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_0^{(i)} \\\\ 
-& \quad\quad \theta_j := \theta_j - \alpha \Big[ \frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_j^{(i)} + \frac{\lambda}{m}\theta_j \Big], \quad j \in \\{1,2,...,n\\} \\\\ 
+& \quad\quad \theta_j := \theta_j - \alpha \Big[ \frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_j^{(i)} + \frac{\lambda}{m}\theta_j \Big], \quad j \in \{1,2,...,n\} \\\\ 
 & \\}
 \end{split}
 $
