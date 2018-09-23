@@ -45,7 +45,7 @@ h_\theta(x) = \theta^T x
 $$
 
 
-![Model Representation](./fig/model_representation.png)
+![Model Representation](img/posts/2018-08-28-Machine-Learning-Notes-1/model_representation.png)
 
 
 We can measure the accuracy of our hypothesis function by using a **cost function**：
@@ -89,9 +89,9 @@ Mostly, $J(\theta)$ is discrete-valued and non-differentiable, so we compute in 
 
 $
 \begin{split}
-& \textit{Repeat until convergency: } \{ \\\\ 
+& \textit{Repeat until convergency: } \\{ \\\\ 
 & \quad\quad \theta_j := \theta_j - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_j^{(i)} \\\\ 
-& \}
+& \\}
 \end{split}
 $
 
@@ -104,7 +104,7 @@ $$
 where, $\theta$ is a n-by-1 vector, $X$ is a m-by-n matrix and $Y$ is a m-by-1 vector.
 
 
-![Gradient Descent Result](./fig/gradient_descent_result.png)
+![Gradient Descent Result](img/posts/2018-08-28-Machine-Learning-Notes-1/gradient_descent_result.png)
 
 
 A **convex** cost function can always converges (with a not too large $\alpha$) to the **global minimum** with gradient descent method, but a non-convex function may converge to a local minimum.
@@ -192,8 +192,6 @@ Sometimes $X^TX$ is **not invertable**, the common causes might be:
 - Redundant features, where two features are very closely related (i.e. they are linearly dependent)
 
 - Too many features (e.g. $m \le n$). In this case, delete some features or use 
-**"[regularization](
-../Chapter%202%20-%20Logistic%20Regression%20&%20Regularization#2-regularization
-)"**.
+**"[regularization](https://arsennnic.github.io/2018/09/07/Machine-Learning-Notes-2/#2-regularization)"**.
 
 Solutions to the above problems include deleting a feature that is linearly dependent with another or deleting one or more features when there are too many features.
