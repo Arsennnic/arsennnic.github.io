@@ -14,9 +14,6 @@ tags:
 
 
 
-
-{{ page.date }}
-
 ## 1 Logistic Regression
 
 ### 1.1 Hypothesis Representation
@@ -43,7 +40,7 @@ $$
 
 The following image shows us what the sigmoid function looks like:
 
-![Sigmold function](../../../../img/posts/2018-09-07-Machine-Learning-Notes-2/sigmold_function.png)
+![Sigmold function]({{site.url}}/img/posts/{{page.tittle}}/sigmold_function.png)
 
 The function $g(z)$ shown here, maps any real number to the (0, 1) interval, making it useful for transforming an arbitrary-valued function into a function better suited for classification.
 
@@ -158,7 +155,7 @@ Now we will approach the classification of data when we have more than two categ
 We divide the problem into (n+1) binary classification, in each one we predict the probability.
 
 $$
-h_\theta^{(i)} = P(y=i|x;\theta), \quad i=0,1,2...,n
+h_\theta^{(i)} = P(y=i|x;\theta), \quad i\in\\{0,1,2...,n\\}
 $$
 
 And we pick the class with the highest probability -- $\max(h_\theta^{(i)})$ -- as our prediction.
