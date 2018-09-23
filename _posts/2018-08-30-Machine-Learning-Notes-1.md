@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Machine Learning Notes
-subtitle:   Chapter I: Linear Regression
+subtitle:   Chapter I - Linear Regression
 date:       2018-08-30
 author:     BY
 header-img: img/bg_home/posters.jpg
