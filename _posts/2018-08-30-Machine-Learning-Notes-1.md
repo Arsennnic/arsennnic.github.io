@@ -74,9 +74,9 @@ The gradient descent algorithm is commonly used for minimizing $J(\theta)$:
 
 $
 \begin{split}
-& \textit{Repeat until convergency: } \{ \\\\ 
+& \textit{Repeat until convergency: } \\{ \\\\ 
 & \quad\quad \theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta) \\\\ 
-& \}
+& \\}
 \end{split}
 $
 
