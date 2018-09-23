@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      Machine Learning Notes
+title:      Machine-Learning-Notes
 subtitle:   Chapter I: Linear Regression
 date:       2018-08-28
 author:     Arsennnic
-header-img: img/bg_home/header_bg.jpg
+header-img: img/bg_home/2018-08-28-Machine-Learning-Notes-(1)/header_bg.jpg
 catalog: true
 tags:
     - Machine Learning
