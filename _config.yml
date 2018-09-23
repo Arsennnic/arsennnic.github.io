@@ -3,15 +3,15 @@ title: Arsennnic | Blog
 SEOTitle: Arsennnic | Blog
 header-img: img/bg_home/posters.jpg
 # email: arsennnic@gmail.com
-description: "Every failure is leading towards success."
+description: ""
 keyword: ""
 url: "http://arsennnic.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/Arsennnic/arsennnic.github.io.git" # you code repository
+# github_repo: "https://github.com/Arsennnic/arsennnic.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Do NOT ask me what is Arsennnic pls!"
+sidebar-about-description: "Do NOT ASK ME WHAT IS ARSENNNIC!"
 sidebar-avatar: /img/avatar/wechat_avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -19,8 +19,8 @@ sidebar-avatar: /img/avatar/wechat_avatar.jpg      # use absolute URL, seeing it
 # SNS settings
 RSS: false
 # weibo_username:     qiubaiying
-github_username:    Arsennnic
-zhihu_username:     arsennnic
+# github_username:    Arsennnic
+# zhihu_username:     arsennnic
 # facebook_username:  baiying.qiu.7
 # jianshu_username:   e71990ada2fd
 #twitter_username:   qiubaiying
