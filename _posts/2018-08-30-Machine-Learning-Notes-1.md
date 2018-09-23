@@ -74,8 +74,8 @@ The gradient descent algorithm is commonly used for minimizing $J(\theta)$:
 
 $
 \begin{split}
-& \textit{Repeat until convergency: } \{ \\\\
-& \quad\quad \theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta) \\\\
+& \textit{Repeat until convergency: } \{ \\\\ 
+& \quad\quad \theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta) \\\\ 
 & \}
 \end{split}
 $
@@ -89,8 +89,8 @@ Mostly, $J(\theta)$ is discrete-valued and non-differentiable, so we compute in 
 
 $
 \begin{split}
-& \textit{Repeat until convergency: } \{ \\\\
-& \quad\quad \theta_j := \theta_j - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_j^{(i)} \\\\
+& \textit{Repeat until convergency: } \{ \\\\ 
+& \quad\quad \theta_j := \theta_j - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)})-y^{(i)}) \cdot x_j^{(i)} \\\\ 
 & \}
 \end{split}
 $
