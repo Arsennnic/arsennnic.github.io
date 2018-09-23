@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Machine Learning Notes
-subtitle:   Chapter I: Linear Regression
-date:       2018-08-30
+title:      Git指令整理1
+subtitle:   不适合阅读的整理的一些个人常用的 Git 指令
+date:       2017-02-15
 author:     BY
 header-img: img/bg_home/posters.jpg
 catalog: true
@@ -12,4 +12,4 @@ tags:
     - Git
 ---
 
-test
+>test
