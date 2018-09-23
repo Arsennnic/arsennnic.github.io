@@ -1,15 +1,14 @@
 ---
 layout:     post
 title:      Machine Learning Notes
-subtitle:   不适合阅读的整理的一些个人常用的 Git 指令
+subtitle:   Chapter I: Linear Regression
 date:       2018-08-30
-author:     BY
-header-img: img/bg_home/posters.jpg
+author:     Arsennnic
+header-img: img/posts/2018-08-28-Machine-Learning-Notes-(1)/header_bg.jpg
 catalog: true
 tags:
-    - Mac
-    - 终端
-    - Git
+    - Machine Learning
+    - Matlab
 ---
 
 >随便整理的一些自用的Git指令
