@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <articles>
-	{% for post in site.posts %}
+	{% for post in paginator.posts %}
 	<article>
 	    <title>{{ post.title }}</title>
 	    <subtitle>{{ post.subtitle }}</subtitle>
