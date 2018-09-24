@@ -30,52 +30,49 @@ layout: default
                                     var posts_list = document.getElementById("posts_list");
                                     var posts = document.getElementsByClassName("post-preview");
                                     for (var post in posts) {
-                                        posts_list.remove(post);
+                                        posts_list.removeChild(post);
                                     }
 
-                                    // for (var r in res) {
-                                    //     if (r.title.search(key) >= 0 || r.subtitle.search(key) >= 0 || r.content.search(key) >= 0) {
-                                    //         var post_preview = document.createElement("div");
-                                    //         post_preview.className = "post-preview";
-                                    //         posts_list.appendChild(post_preview);
+                                    for (var r in res) {
+                                        if (r.title.search(key) >= 0 || r.subtitle.search(key) >= 0 || r.content.search(key) >= 0) {
+                                            var post_preview = document.createElement("div");
+                                            post_preview.className = "post-preview";
+                                            posts_list.appendChild(post_preview);
 
-                                    //         var post_title_container = document.createElement("a");
-                                    //         post_title_container.href = r.url;
-                                    //         post_preview.appendChild(post_title_container);
+                                            var post_title_container = document.createElement("a");
+                                            post_title_container.href = r.url;
+                                            post_preview.appendChild(post_title_container);
 
-                                    //         var post_title = document.createElement("h2");
-                                    //         post_title.className = "post-title";
-                                    //         post_title.innerHTML = r.title;
-                                    //         post_title_container.appendChild(post_title);
+                                            var post_title = document.createElement("h2");
+                                            post_title.className = "post-title";
+                                            post_title.innerHTML = r.title;
+                                            post_title_container.appendChild(post_title);
 
-                                    //         if (r.subtitle) {
-                                    //             var post_subtitle = document.createElement("h3");
-                                    //             post_subtitle.className = "post-subtitle";
-                                    //             post_subtitle.innerHTML = r.subtitle;
-                                    //             post_title_container.appendChild(post_subtitle);
-                                    //         }
+                                            if (r.subtitle) {
+                                                var post_subtitle = document.createElement("h3");
+                                                post_subtitle.className = "post-subtitle";
+                                                post_subtitle.innerHTML = r.subtitle;
+                                                post_title_container.appendChild(post_subtitle);
+                                            }
 
-                                    //         var start = Math.max(r.content.search(key), 0);
-                                    //         var content = r.content.slice(start, start+200);
-                                    //         if (content.length < 200) {
-                                    //             content = r.content.reverse().slice(0, 200).reverse();
-                                    //         } 
-                                    //         content = content + "...";
+                                            var start = Math.max(r.content.search(key), 0);
+                                            var content = r.content.slice(start, start+200);
+                                            if (content.length < 200) {
+                                                content = r.content.reverse().slice(0, 200).reverse();
+                                            } 
+                                            content = content + "...";
 
-                                    //         var post_content = document.createElement("div");
-                                    //         post_content.className = "post-content-preview";
-                                    //         post_content.style="color: #a3a3a3;";
-                                    //         post_content.innerHTML = content;
-                                    //         post_preview.appendChild(post_content);
+                                            var post_content = document.createElement("div");
+                                            post_content.className = "post-content-preview";
+                                            post_content.style="color: #a3a3a3;";
+                                            post_content.innerHTML = content;
+                                            post_preview.appendChild(post_content);
 
-                                    //     } else {
-                                    //         console.log("No article found.");
-                                    //     }
+                                        } else {
+                                            console.log("No article found.");
+                                        }
 
-                                    // }
-                                },
-                                error: function() {
-                                    console.log(1);
+                                    }
                                 }
                             });
                         };
