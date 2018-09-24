@@ -21,9 +21,10 @@ description: "Thinking will not overcome fear but action will."
     <p class="post-meta">
         Posted on {{ post.date | date: "%B %-d, %Y" }}
     </p>
+    <hr>
 </div>
-<hr>
 {% endfor %}
+<div id="no_article_label" style="color: #a3a3a3; margin-top: 48px; justify-content: center; display: none;">No Article Found</div>
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}

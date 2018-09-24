@@ -3,7 +3,6 @@ layout:     post
 title:      Machine Learning Notes (2)
 subtitle:   Chapter II - Linear Regression
 date:       2018-09-07
-author:     Arsennnic
 header-img: img/posts/Machine Learning Notes (2)/header_bg.png
 catalog: true
 mathjax: true

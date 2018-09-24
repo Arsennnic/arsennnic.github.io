@@ -6,6 +6,7 @@ layout: null
     {
       "title": "{{ post.title }}",
       "subtitle": "{{ post.subtitle }}",
+      "content": {{ post.content | strip_newlines | strip_html | split: ' ' | remove: '\\' }},
       "tags": "{{ post.tags | join: ', ' }}",
       "url": "{{ site.url }}{{ post.url }}",
       "date": "{{ post.date | date: "%B %-d, %Y" }}"
