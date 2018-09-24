@@ -230,8 +230,8 @@ layout: default
 
                 var posts_list = document.getElementById("posts_list");
                 var posts = document.getElementsByClassName("post-preview");
-                for (var post in posts) {
-                    posts_list.removeChild(post);
+                for (var i = 0; i < posts.length; i++) {
+                    posts_list.removeChild(posts[0]);
                 }
 
                 for (var r in res) {
