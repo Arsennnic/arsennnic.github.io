@@ -28,19 +28,20 @@ layout: default
                                         };
                                     }).get();
 
-                                    $( "#search" ).autocomplete({
-                                        source: data,
-                                        minLength: 0,
-                                        select: function( event, ui ) {
-                                            window.location.href = ui.item.url;
-                                        }
-                                    });
+                                    // $( "#search" ).autocomplete({
+                                    //     source: data,
+                                    //     minLength: 0,
+                                    //     select: function( event, ui ) {
+                                    //         window.location.href = ui.item.url;
+                                    //     }
+                                    // });
+                                    console.log(data);
                                 }
                             });
                         }
                     </script>
                     <div>
-                        <input class="search-input" type="text" name="search" id="search" placeholder="Search some article here" />
+                        <input class="search-input" type="text" name="search" id="search" placeholder="Search some article here" oninput="search_article()" />
                     </div>
                     {% endif %}
 
