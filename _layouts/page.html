@@ -36,7 +36,9 @@ layout: default
                                     //     }
                                     // });
                                     console.log(data);
-                                    console.log({{ paginator.posts }});
+
+                                    var a = {{ paginator.posts }};
+                                    console.log(a[0].url);
                                 }
                             });
                         }
