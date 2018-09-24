@@ -16,7 +16,7 @@ sidebar-avatar: /img/avatar/wechat_avatar.jpg      # use absolute URL, seeing it
 
 
 # Search box
-searchbox: true
+searchbox: false
 
 
 # SNS settings
