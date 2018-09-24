@@ -234,7 +234,8 @@ layout: default
                     posts_list.removeChild(posts[i-1]);
                 }
 
-                for (var r in res) {
+                for (var i = 0; i < res.length; i++) {
+                    r = res[i];
                     if (r.title.indexOf(key) >= 0 || r.subtitle.indexOf(key) >= 0 || r.content.indexOf(key) >= 0) {
                         var post_preview = document.createElement("div");
                         post_preview.className = "post-preview";
