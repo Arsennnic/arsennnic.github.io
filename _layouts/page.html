@@ -11,6 +11,14 @@ layout: default
                     <h2>
                         {{ page.description }}
                     </h2>
+
+                    <!-- Search tool -->
+                    {% if site.searchbox %}
+                    <div>
+                        <input class="search-input" type="text" name="search" />
+                    </div>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
