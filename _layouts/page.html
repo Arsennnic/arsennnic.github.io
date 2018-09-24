@@ -14,8 +14,33 @@ layout: default
 
                     <!-- Search tool -->
                     {% if site.searchbox %}
+                    <script type="text/javascript">
+                        var search_article = function(){
+                            $.ajax({
+                                url: "search.xml",
+                                dataType: "xml",
+                                success: function( xmlResponse ) {
+                                    var data = $( "article", xmlResponse ).map(function() {
+                                        return {
+                                            value: $( "title", this ).text() + ", " +
+                                                ( $.trim( $( "date", this ).text() ) ),
+                                            url: $("url", this).text()
+                                        };
+                                    }).get();
+
+                                    $( "#search" ).autocomplete({
+                                        source: data,
+                                        minLength: 0,
+                                        select: function( event, ui ) {
+                                            window.location.href = ui.item.url;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    </script>
                     <div>
-                        <input class="search-input" type="text" name="search" />
+                        <input class="search-input" type="text" name="search" id="search" placeholder="Search some article here" />
                     </div>
                     {% endif %}
 
@@ -29,12 +54,12 @@ layout: default
 <div class="container">
 	<div class="row">
         {% if site.sidebar == false %}
-<!-- NO SIDEBAR -->
-    <!-- PostList Container -->
+        <!-- NO SIDEBAR -->
+            <!-- PostList Container -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
                 {{ content }}
             </div>
-    <!-- Sidebar Container -->
+            <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -70,8 +95,8 @@ layout: default
             </div>
         {% else %}
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
+        <!-- USE SIDEBAR -->
+            <!-- PostList Container -->
     		<div class="
                 col-lg-8 col-lg-offset-1
                 col-md-8 col-md-offset-1
@@ -81,7 +106,7 @@ layout: default
             ">
     			{{ content }}
     		</div>
-    <!-- Sidebar Container -->
+            <!-- Sidebar Container -->
             <div class="
                 col-lg-3 col-lg-offset-0
                 col-md-3 col-md-offset-0
