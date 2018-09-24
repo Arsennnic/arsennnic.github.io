@@ -76,11 +76,12 @@ layout: default
                             });
                         };
 
-                        document.getElementById("search").onkeyup = function(e) {
+
+                        $("#search").bind("keyup", function(e) {
                             if (e.keyCode == "13") {
                                 search_article();
                             }
-                        };
+                        });
                     </script>
                     <div>
                         <input class="search-input" type="text" name="search" id="search" placeholder="Search some article here"/>
