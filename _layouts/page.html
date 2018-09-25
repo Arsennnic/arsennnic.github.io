@@ -296,30 +296,16 @@ layout: default
     };
 
 
-    var add_accent = function(source, target) {
-        var output = source; 
-        source = source.toLowerCase(); target = target.toLowerCase();
-        let accent_start = "<span class=\"search-result-accent\">";
-        let accent_end = "<\/span>";
-        var positions = new Array();
-        function search_once(source, target){
-            var pos = source.indexOf(target);
-            while (pos >- 1) {
-                positions.push(pos);
-                pos = source.indexOf(target, pos+1);
-            }
-        }
-        search_once(source, target);
-        for (var i = positions.length - 1; i >= 0; i--) {
-            output = output.splice(positions[i]+target.length, accent_end);
-            output = output.splice(positions[i], accent_start);
-        }
-        return output;
-    };
-
-
     var search_article = function(){
-        var keys = document.getElementById("search").value.split(" ");
+    	var key = document.getElementById("search").value;
+        var keys = key.split(" ");
+        if (key != "") {
+        	for (var i = keys.length - 1; i >= 0; i--) {
+	        	if (keys[i] == "") {
+	        		keys.splice(i, 1);
+	        	}
+	        }
+        }
 
         var posts_list = document.getElementById("posts_list");
         var posts = document.getElementsByClassName("post-preview");
@@ -350,13 +336,13 @@ layout: default
                 var subtitle = posts[i].getElementsByTagName("h3")[0].innerHTML;
                 var content = posts[i].getElementsByTagName("div")[0].innerHTML;
                 for (var j = 0; j < keys.length; j++) {
-                    title = title.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
-                    subtitle = subtitle.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
-                    content = content.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
-                    // title = add_accent(title, keys[j]);
-                    // subtitle = add_accent(subtitle, keys[j]);
-                    // content = add_accent(content, keys[j]);
+                    title = title.replace(new RegExp(keys[j], "gi"), " !s! " + keys[j] + " !e! ");
+                    subtitle = subtitle.replace(new RegExp(keys[j], "gi"), " !s! " + keys[j] + " !e! ");
+                    content = content.replace(new RegExp(keys[j], "gi"), " !s! " + keys[j] + " !e! ");
                 }
+                title = title.replace(new RegExp(" !s! ", "g"), "<span class=\"search-result-accent\">").replace(new RegExp(" !e! ", "g"), "<\/span>");
+                subtitle = subtitle.replace(new RegExp(" !s! ", "g"), "<span class=\"search-result-accent\">").replace(new RegExp(" !e! ", "g"), "<\/span>");
+                content = content.replace(new RegExp(" !s! ", "g"), "<span class=\"search-result-accent\">").replace(new RegExp(" !e! ", "g"), "<\/span>");
                 posts[i].getElementsByTagName("h2")[0].innerHTML = title;
                 posts[i].getElementsByTagName("h3")[0].innerHTML = subtitle;
                 posts[i].getElementsByTagName("div")[0].innerHTML = content;
