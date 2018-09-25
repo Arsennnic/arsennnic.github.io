@@ -217,9 +217,21 @@ layout: default
 {% if site.searchbox %}
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
-    String.prototype.reverse = function(){
+    String.prototype.reverse = function () {
         return this.split("").reverse().join("");
-    }
+    };
+
+    String.prototype.despecial = function (ch) {
+        return this.replace(/[!@#$%^&*\(\)_<>=?:\";',./{}\[\]]/g, ch).replace(/ /g, ch);
+    };
+
+    // String.prototype.match = function (str) {
+    //     if (typeof(str) == "string") {
+    //         return this.toLowerCase().indexOf(str.toLowerCase()) >= 0;
+    //     } else {
+    //         return false;
+    //     }
+    // };
 
     var articles = null;
     $.ajax({
@@ -235,8 +247,67 @@ layout: default
     });
 
 
+    var add_relative_posts = function (post_info, key) {
+        var post_preview = document.createElement("div");
+        post_preview.id = "post_" + post_info.title.despecial("_");
+        post_preview.className = "post-preview";
+        posts_list.appendChild(post_preview);
+
+        var post_title_container = document.createElement("a");
+        post_title_container.href = post_info.url;
+        post_preview.appendChild(post_title_container);
+
+        var post_title = document.createElement("h2");
+        post_title.className = "post-title";
+        post_title.innerHTML = post_info.title;
+        post_title_container.appendChild(post_title);
+
+        if (post_info.subtitle) {
+            var post_subtitle = document.createElement("h3");
+            post_subtitle.className = "post-subtitle";
+            post_subtitle.innerHTML = post_info.subtitle;
+            post_title_container.appendChild(post_subtitle);
+        }
+
+        var start = Math.max(post_info.content.indexOf(key), 0);
+        var content = post_info.content.slice(start, start+200);
+        if (content.length < 200) {
+            content = post_info.content.reverse().slice(0, 200).reverse();
+        } 
+        content = content + "...";
+
+        var post_content = document.createElement("div");
+        post_content.className = "post-content-preview";
+        post_content.style="color: #a3a3a3;";
+        post_content.innerHTML = content;
+        post_preview.appendChild(post_content);
+
+        var post_date = document.createElement("p");
+        post_date.className = "post-meta";
+        post_date.innerHTML = "Posted on " + post_info.date;
+        post_preview.appendChild(post_date);
+
+        var divider = document.createElement("hr");
+        post_preview.appendChild(divider);
+    };
+
+
+    var add_accent = function(source, target) {
+        var positions = new Array();
+        function search_once(source, target){
+            var pos = source.indexOf(target);
+            while (pos >- 1) {
+                positions.push(pos);
+                pos = source.indexOf(target, pos+1);
+            }
+        }
+        search_once(source, target);
+        
+    };
+
+
     var search_article = function(){
-        var keys = document.getElementById("search").value.toLowerCase().split(" ");
+        var keys = document.getElementById("search").value.split(" ");
 
         var posts_list = document.getElementById("posts_list");
         var posts = document.getElementsByClassName("post-preview");
@@ -245,53 +316,15 @@ layout: default
         }
 
         for (var i = 0; i < articles.length; i++) {
-            r = articles[i];
-            found = false;
+            var r = articles[i];
+            var found = false;
             for (var j = 0; j < keys.length; j++) {
-                if (document.getElementById("post_" + r.title.replace(/[!@#$%^&*\(\)_<>=?:\";',./{}\[\]]/g, "_").replace(/ /g, "_")) == null) {
-                    if (r.title.toLowerCase().indexOf(keys[j]) >= 0 || r.subtitle.toLowerCase().indexOf(keys[j]) >= 0 || r.content.toLowerCase().indexOf(keys[j]) >= 0) {
-                        var post_preview = document.createElement("div");
-                        post_preview.id = "post_" + r.title.replace(/[!@#$%^&*\(\)_<>=?:\";',./{}\[\]]/g, "_").replace(/ /g, "_");
-                        post_preview.className = "post-preview";
-                        posts_list.appendChild(post_preview);
+                if (document.getElementById("post_" + r.title.despecial("_")) == null) {
+                    if (r.title.toLowerCase().indexOf(keys[j].toLowerCase()) >= 0 
+                        || r.subtitle.toLowerCase().indexOf(keys[j].toLowerCase()) >= 0 
+                        || r.content.toLowerCase().indexOf(keys[j].toLowerCase()) >= 0) {
 
-                        var post_title_container = document.createElement("a");
-                        post_title_container.href = r.url;
-                        post_preview.appendChild(post_title_container);
-
-                        var post_title = document.createElement("h2");
-                        post_title.className = "post-title";
-                        post_title.innerHTML = r.title;
-                        post_title_container.appendChild(post_title);
-
-                        if (r.subtitle) {
-                            var post_subtitle = document.createElement("h3");
-                            post_subtitle.className = "post-subtitle";
-                            post_subtitle.innerHTML = r.subtitle;
-                            post_title_container.appendChild(post_subtitle);
-                        }
-
-                        var start = Math.max(r.content.indexOf(keys[j]), 0);
-                        var content = r.content.slice(start, start+200);
-                        if (content.length < 200) {
-                            content = r.content.reverse().slice(0, 200).reverse();
-                        } 
-                        content = content + "...";
-
-                        var post_content = document.createElement("div");
-                        post_content.className = "post-content-preview";
-                        post_content.style="color: #a3a3a3;";
-                        post_content.innerHTML = content;
-                        post_preview.appendChild(post_content);
-
-                        var post_date = document.createElement("p");
-                        post_date.className = "post-meta";
-                        post_date.innerHTML = "Posted on " + r.date;
-                        post_preview.appendChild(post_date);
-
-                        var divider = document.createElement("hr");
-                        post_preview.appendChild(divider);
-
+                        add_relative_posts(r, keys[j]);
                         found = true;
                     }
                 }
@@ -299,6 +332,20 @@ layout: default
         }
         if (found) {
             document.getElementById("no_article_label").style = "color: #a3a3a3; margin-top: 48px; justify-content: center; display: none;";
+            posts = document.getElementsByClassName("post-preview");
+            for (var i = 0; i < posts.length; i++) {
+                var title = posts[i].getElementsByTagName("h2")[0].innerHTML;
+                var subtitle = posts[i].getElementsByTagName("h3")[0].innerHTML;
+                var content = posts[i].getElementsByTagName("div")[0].innerHTML;
+                for (var j = 0; j < keys.length; j++) {
+                    title = title.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
+                    subtitle = subtitle.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
+                    content = content.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
+                }
+                posts[i].getElementsByTagName("h2")[0].innerHTML = title;
+                posts[i].getElementsByTagName("h3")[0].innerHTML = subtitle;
+                posts[i].getElementsByTagName("div")[0].innerHTML = content;
+            }
         } else {
             document.getElementById("no_article_label").style = "color: #a3a3a3; margin-top: 48px; justify-content: center; display: flex;";
         }
