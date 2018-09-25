@@ -225,6 +225,10 @@ layout: default
         return this.replace(/[!@#$%^&*\(\)_<>=?:\";',./{}\[\]]/g, ch).replace(/ /g, ch);
     };
 
+    String.prototype.splice = function(start, str) {
+        return this.slice(0, start) + str + this.slice(start);
+    };
+
     // String.prototype.match = function (str) {
     //     if (typeof(str) == "string") {
     //         return this.toLowerCase().indexOf(str.toLowerCase()) >= 0;
@@ -293,6 +297,10 @@ layout: default
 
 
     var add_accent = function(source, target) {
+        var output = source; 
+        source = source.toLowerCase(); target = target.toLowerCase();
+        let accent_start = "<span class=\"search-result-accent\">";
+        let accent_end = "<\/span>";
         var positions = new Array();
         function search_once(source, target){
             var pos = source.indexOf(target);
@@ -302,7 +310,11 @@ layout: default
             }
         }
         search_once(source, target);
-        
+        for (var i = positions.length - 1; i >= 0; i--) {
+            output = output.splice(positions[i]+target.length, accent_end);
+            output = output.splice(positions[i], accent_start);
+        }
+        return output;
     };
 
 
@@ -341,6 +353,9 @@ layout: default
                     title = title.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
                     subtitle = subtitle.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
                     content = content.replace(new RegExp(keys[j], "gi"), "<span class=\"search-result-accent\">" + keys[j] + "<\/span>");
+                    // title = add_accent(title, keys[j]);
+                    // subtitle = add_accent(subtitle, keys[j]);
+                    // content = add_accent(content, keys[j]);
                 }
                 posts[i].getElementsByTagName("h2")[0].innerHTML = title;
                 posts[i].getElementsByTagName("h3")[0].innerHTML = subtitle;
@@ -352,11 +367,29 @@ layout: default
     };
 
 
+    var search_timer = {
+        id: null,
+        running: function () {
+            search_article();
+            this.id = null;
+        },
+        run: function () {
+            clearTimeout(this.id);
+            var that = this;
+            this.id = setTimeout(function () {
+                that.running();
+            }, 200);
+        }
+    };
+
     $("#search").bind("keyup", function(event) {
         var key = document.getElementById("search").value;
         document.getElementById("search").value = key.replace("  ", " ");
         if (articles != null && key[key.length-1] != " ") {
-            search_article();
+            // search_article();
+            if (search_timer.id == null) {
+                search_timer.run();
+            }
         }
     });
 </script>
