@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Machine Learning Notes (2)
-subtitle:   Chapter II - Linear Regression
+subtitle:   Chapter II - Logistic Regression & Regularization
 date:       2018-09-07
 header-img: img/posts/Machine Learning Notes (2)/header_bg.png
 catalog: true
@@ -264,10 +264,10 @@ where,
 $$
 L=\left[
 \begin{matrix}
-0 &   &   &   &   \\\\ 
-  & 1 &   &   &   \\\\ 
-  &   & 1 &   &   \\\\ 
-  &   &   & \ddots & \\\\ 
+0 &   &   &   &   \\ 
+  & 1 &   &   &   \\ 
+  &   & 1 &   &   \\ 
+  &   &   & \ddots & \\ 
   &   &   &  & 1
 \end{matrix}
 \right]
