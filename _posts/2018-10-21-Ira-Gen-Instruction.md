@@ -16,7 +16,7 @@ tags:
 
 ### 1 Startup
 
-Download Ira-gen [here]({{site.url}}/files/{{page.title}}/Ira-gen.zip) and unzip it to some directory. Then double-click **Ira-gen.exe** to open command prompt.
+Download Ira-gen [here]({{site.url}}/files/{{page.title}}/Ira-gen.rar) and unzip it to some directory. Then double-click **Ira-gen.exe** to open command prompt.
 
 ![Startup]({{site.url}}/img/posts/{{page.title}}/startup.png)
 
