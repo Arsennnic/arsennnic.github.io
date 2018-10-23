@@ -88,13 +88,13 @@ Without any more configuration, you can compile and run **\*.py** with "Ctrl+B".
 
 ## 3.2 C/C++
 
-Download MinGW [here]({{site.url}}/files/{{page.title}}/MinGW-0.6.3.exe) and install.
+Download MinGW [here]({{site.url}}/files/{{page.title}}/MinGW-0.6.3.rar) and install.
 
-Run MinGW Installation Manager, click the rectangle before "**mingw32-base**" and "**mingw32-gcc-g++**", mark them for installation, then click "**Installation >> Apply Changes**".
+Run MinGW Installation Manager, click the rectangle before "**mingw32-base**" and "**mingw32-gcc-g++**", mark them for installation, then click "**Installation >> Apply Changes**" to install.
 
-![MinGW32_Base_1]({{site.url}}/img/posts/{{page.title}}/c_config_mingw_1.png)
+![MinGW32_Base]({{site.url}}/img/posts/{{page.title}}/c_config_mingw_1.png)
 
-![MinGW32_Base_2]({{site.url}}/img/posts/{{page.title}}/c_config_mingw_2.png)
+![MinGW32_G++]({{site.url}}/img/posts/{{page.title}}/c_config_mingw_2.png)
 
 Close the installation dialouge and qiut MinGW Installation Manager. Then add MinGW to *PATH* (*by default "C:\MinGW\bin"*).
 
@@ -110,26 +110,85 @@ Launch Sublime Text 3. Click "**Tools >> Build System >> New Build System**" and
 
 ```
 {
- "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&", "start", "cmd", "/c", "${file_base_name} & echo. & pause"],
- "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
- "working_dir": "${file_path}",
- "selector": "source.c, source.c++",
- "shell": true,
- "encoding":"cp936",
+    "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&", "start", "cmd", "/c", "${file_base_name} & echo. & pause"],
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "working_dir": "${file_path}",
+    "selector": "source.c, source.c++",
+    "shell": true,
+    "encoding":"cp936",
 }
 ```
 
 Save it as "**C & C++.sublime-build**", and now you can compile and run **\*.c** or **\*.cpp** with "Ctrl+B".
 
+## 3.3 Fortran90
 
-## 3.3 Markdown
+Make sure you have installed MinGW as instructed in [Character 3.2](#32-cc).
 
-To be continue...
+Run MinGW Installation Manager, click the rectangle before "**mingw32-gcc-fortran**" and mark it for installation, then click "**Installation >> Apply Changes**" to install.
 
-## 3.4 LaTex
+![MinGW32_Fortran]({{site.url}}/img/posts/{{page.title}}/fortran90_config_mingw.png)
 
-To be continue...
+Launch Sublime Text 3. Click "**Tools >> Build System >> New Build System**" and paste these lines:
 
-## 3.5 Fortran90
+```
+{
+    "cmd" : "gfortran ${file_name} -o ${file_base_name} && ${file_base_name}",
+    "selector" : "source.f90",
+    "working_dir" : "${file_path}",
+    "shell" : true
+}
+```
 
-To be continue...
+Save it as "**Fortran90.sublime-build**", and now you can compile and run **\*.f90** with "Ctrl+B".
+
+
+## 3.4 Markdown
+
+Launch Sublime Text 3. Click "**Preferences >> Package Control**" and input "Install Package". Press "ENTER".
+
+Install **OmniMarkupPreviewer** plugin.
+
+Then paste following lines in "**Preferences >> Package Settings >> OmniMarkupPreviewer >> Settings - User**":
+
+```
+{
+    "server_host": "127.0.0.1",
+    "server_port": 51004,
+    "refresh_on_modified": true,
+    "refresh_on_modified_delay": 500,
+    "refresh_on_saved": true,
+    "mathjax_enabled": true,
+    "renderer_options-MarkdownRenderer": {
+        "extensions": ["tables", "fenced_code", "codehilite"]
+    }
+}
+```
+
+Paste following lines in "**Preferences >> Package Settings >> OmniMarkupPreviewer >> Key Bindings - User**":
+
+```
+[
+    {
+        "keys": ["ctrl+b"], "command": "omni_markup_preview",
+        "context": [{"key": "omnimarkup_is_enabled", "operator": "equal", "operand": ""}]
+    }
+]
+```
+
+Now you can compile and preview **\*.md** with "Ctrl+B". 
+
+
+## 3.5 LaTex
+
+Downlaod LaTex [here](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/), where I select **textlive2017.iso**.
+
+Mount ISO and double-click on **install-tl-advanced.bat** or **install-tl-windows.bat** to install.
+
+Download Sumatra PDF [here]({{site.url}}/files/{{page.title}}/SumatraPDF-3.1.2-64.rar) and install it in default directory.
+
+After installation is completed, run Sublime Text 3. Install package: **LatexTools** with Package Control.
+
+Now you can compile and preview **\*.tex** with "Ctrl+B". Select Building system: **"LaTex - Basic Builder - XeLaTex"**.
+
+
