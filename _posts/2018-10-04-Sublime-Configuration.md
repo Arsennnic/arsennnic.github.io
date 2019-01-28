@@ -183,7 +183,7 @@ Now you can compile and preview **\*.md** with "Ctrl+B".
 
 Downlaod LaTex [here](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/), where I select **textlive2017.iso**.
 
-Mount ISO and double-click on **install-tl-advanced.bat** or **install-tl-windows.bat** to install.
+Mount ISO image and double-click on **install-tl-advanced.bat** or **install-tl-windows.bat** to install.
 
 Download Sumatra PDF [here]({{site.url}}/files/{{page.title}}/SumatraPDF-3.1.2-64.rar) and install it in default directory.
 
@@ -191,4 +191,4 @@ After installation is completed, run Sublime Text 3. Install package: **LatexToo
 
 Now you can compile and preview **\*.tex** with "Ctrl+B". Select Building system: **"LaTex - Basic Builder - XeLaTex"**.
 
-
+Other recommended 
