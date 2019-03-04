@@ -80,4 +80,12 @@ sudo compiz
 
 ![WSL Presentation]({{site.url}}/img/posts/{{page.title}}/wsl_presentation.png)
 
+### 3 Create Desktop Shortcut
+
+Scipt for quick start: [ubuntu_gui.bat]({{site.url}}/files/{{page.title}}/ubuntu_gui.bat).
+
+Along with the icon of Ubuntu: [ubuntu_logo.ico]({{site.url}}/files/{{page.title}}/ubuntu_logo.ico).
+
+Download and move them in %VcXsrv%, and create a desktop shortcut for ubuntu_gui.bat.
+
 Enjoy!
